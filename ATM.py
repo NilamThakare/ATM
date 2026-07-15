@@ -5,7 +5,7 @@ balance=10000
 while attempts<3:
   if pin==1234:
     print("Welcome to ATM")
-    while choice<=4:
+    while True:
       print("""
       1.Check balance
       2.Deposite Amount
@@ -19,15 +19,20 @@ while attempts<3:
         deposite_amount=int(input("Enter amount to deposite:"))
         balance+=deposite_amount
         print(f"Your balance after deposte is Rs.{balance}")
+        if deposite_amount<0:
+            print("Invalid amount!")
+          
       elif choice==3:
         withdrawal_amount=int(input("Enter amount to withdraw:"))
         balance -= withdrawal_amount
         print(f"Your balance after withdrawal is Rs.{balance}")
+        if withdrawal_amount>balance:
+          print("Insufficient Balance!")
       elif choice==4:
         print("Exiting....")
       else:
         print("Invalid Choice!")
-      break
+      
 
   else:
     print("Invalid pin")
@@ -36,4 +41,4 @@ while attempts<3:
     if attempts==3:
       print("Too many attempts")
   
-print("Thank you for visiting ATM")
+print("Thank you for visiting Smart ATM")
